@@ -17,7 +17,9 @@ fn main() {
             height: 1600.,
             ..Default::default()
         })
-        .add_plugins(DefaultPlugins)
+        .add_plugins_with(DefaultPlugins, |plugins| {
+            plugins.disable::<bevy::audio::AudioPlugin>()
+        })
         .init_resource::<PickingCamera>()
         .add_plugin(PickingPlugin)
         .add_plugin(BoardPlugin)
